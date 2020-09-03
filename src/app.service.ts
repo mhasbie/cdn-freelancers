@@ -1,18 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { ApiProperty } from '@nestjs/swagger';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { MongoRepository } from 'typeorm';
+import { ObjectID } from 'mongodb';
+import { User } from './entity/user.entity';
 
 @Injectable()
 export class AppService {
-	getHello(): string {
-		return 'Hello World!';
+	constructor(
+		@InjectRepository(User)
+		private readonly usersRepository: MongoRepository<User>
+	) {}
+	
+	async findAll(): Promise<User[]> {
+		return await this.usersRepository.find();
 	}
 	
-	findAll(): string {
-		return 'All users';
-	}
-	
-	getUser(id): string {
-		return `Get user ${id}`;
+	async getUser(id): Promise<User> {
+		const user = ObjectID.isValid(id) && await this.usersRepository.findOne(id);
+		if (!user) {
+			// Entity not found
+			throw new NotFoundException();
+		}
+		return user;
 	}
 	
 	updateUser(id): string {
@@ -23,8 +32,11 @@ export class AppService {
 		return `Delete user ${id}`;
 	}
 	
-	addUser(params): string {
-		console.log('params:', params);
-		return `Add new user`;
+	async addUser(user: Partial<User>): Promise<User> {
+		//console.log('params:', user);		
+		if (!user || !user.username || !user.email || !user.phone) {
+			throw new BadRequestException(`A user must have at least username, email, and phone defined`);
+		}
+		return await this.usersRepository.save(new User(user));
 	}
 }
