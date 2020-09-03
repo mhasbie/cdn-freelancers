@@ -9,29 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserDto = void 0;
+exports.UserDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class CreateUserDto {
-}
+const graphql_1 = require("@nestjs/graphql");
+let UserDto = class UserDto {
+};
 __decorate([
+    graphql_1.Field(),
     swagger_1.ApiProperty(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "username", void 0);
+], UserDto.prototype, "username", void 0);
 __decorate([
+    graphql_1.Field(),
     swagger_1.ApiProperty(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "email", void 0);
+], UserDto.prototype, "email", void 0);
 __decorate([
+    graphql_1.Field(),
     swagger_1.ApiProperty(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "phone", void 0);
+], UserDto.prototype, "phone", void 0);
 __decorate([
+    graphql_1.Field(type => [String]),
     swagger_1.ApiProperty(),
     __metadata("design:type", Array)
-], CreateUserDto.prototype, "skillsets", void 0);
+], UserDto.prototype, "skillsets", void 0);
 __decorate([
+    graphql_1.Field(type => [String]),
     swagger_1.ApiProperty(),
     __metadata("design:type", Array)
-], CreateUserDto.prototype, "hobby", void 0);
-exports.CreateUserDto = CreateUserDto;
+], UserDto.prototype, "hobby", void 0);
+UserDto = __decorate([
+    graphql_1.InputType()
+], UserDto);
+exports.UserDto = UserDto;
 //# sourceMappingURL=user.dto.js.map

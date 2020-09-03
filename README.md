@@ -27,11 +27,11 @@ Go to [https://cdn-freelancers.herokuapp.com/api/](https://cdn-freelancers.herok
 
 | HTTP Method | Route | Params | Request Body | Description | Response |
 | ---         | ---   | ---    | ---          | ---         | ---      |
-| `GET`         | /all  |        |              | Get all users | `200` OK |
-| `GET`         | /{id}  | `id`:`string` |              | Fetch user by id | `200` OK <br/> `404` Record not found. |
-| `PUT`         | /{id}  | `id`:`string` | [User DTO](#user-dto)             | Update user info by id | `204` Record updated. <br/> `404` Record not found. |
-| `DELETE`      | /{id}  | `id`:`string` |              | Delete user by id | `204` Record deleted. <br/> `404` Record not found. |
-| `POST`         | /  |        | [User DTO](#user-dto)             | Create new user | `201` The record has been successfully created. <br/> `400` Bad Request. |
+| `GET`         | /user/all  |        |              | Get all users | `200` OK |
+| `GET`         | /user/{id}  | `id`:`string` |              | Fetch user by id | `200` OK <br/> `404` Record not found. |
+| `PUT`         | /user/{id}  | `id`:`string` | [User DTO](#user-dto)             | Update user info by id | `204` Record updated. <br/> `404` Record not found. |
+| `DELETE`      | /user/{id}  | `id`:`string` |              | Delete user by id | `204` Record deleted. <br/> `404` Record not found. |
+| `POST`         | /user/  |        | [User DTO](#user-dto)             | Create new user | `201` The record has been successfully created. <br/> `400` Bad Request. |
 
 ### User DTO
 
@@ -46,6 +46,102 @@ Go to [https://cdn-freelancers.herokuapp.com/api/](https://cdn-freelancers.herok
   "hobby": [
     "string"
   ]
+}
+```
+
+## API Usage (GraphQL)
+
+### @Query users
+Return all users
+
+Example:
+
+```graphql
+{
+  users {
+	id
+    username
+    email
+    phone
+    skillsets
+    hobby
+  }
+}
+```
+
+### @Query getUser(id: string)
+Get user by id
+
+Example:
+
+```graphql
+{
+  getUser(id: "abc") {
+    id
+    username
+    email
+    phone
+    skillsets
+    hobby
+  }
+}
+```
+
+### @Mutation addUser(newUser: UserDto)
+Create new user
+
+Example:
+
+```graphql
+mutation {
+  addUser(newUser: {
+    username: "string",
+    email: "string",
+    phone: "string",
+    skillsets: [
+      "string"
+    ],
+    hobby: [
+      "string"
+    ]
+  }){
+    id
+    username
+    email
+  }
+}
+```
+
+### @Mutation updateUser(id: string, userData: UserDto)
+Update user info by id
+
+Example:
+
+```graphql
+mutation {
+  updateUser(id: "string", userData: {
+    username: "string",
+    email: "string",
+    phone: "string",
+    skillsets: [
+      "string"
+    ],
+    hobby: [
+      "string"
+    ]
+  })
+}
+```
+
+
+### @Mutation removeUser(id: string)
+Delete user by id
+
+Example:
+
+```graphql
+mutation {
+  removeUser(id: "string")
 }
 ```
 
