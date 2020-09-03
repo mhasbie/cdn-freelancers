@@ -23,32 +23,8 @@ export class AppService {
 		return `Delete user ${id}`;
 	}
 	
-	addUser(): string {
+	addUser(params): string {
+		console.log('params:', params);
 		return `Add new user`;
 	}
-}
-
-export class FindUserDto {
-	@ApiProperty()
-	id: string;
-}
-
-export class CreateUserDto {
-	@ApiProperty()
-	id: string;
-	
-	@ApiProperty()
-	username: string;
-	
-	@ApiProperty()
-	email: string;
-	
-	@ApiProperty()
-	phone: string;
-	
-	@ApiProperty()
-	skillsets: string;
-	
-	@ApiProperty()
-	hobby: string;
 }
