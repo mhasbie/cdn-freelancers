@@ -1,0 +1,24 @@
+{
+   "type": "mongodb",
+   "host": "biylwspkw6jfgsy-mongodb.services.clever-cloud.com",
+   "port": 27017,
+   "username": "uqgemkamwihldtscagzq",
+   "password": "XL4ocpsxXPMGPO7ZfEK9",
+   "database": "biylwspkw6jfgsy",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/entity/**/*.ts"
+   ],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}
