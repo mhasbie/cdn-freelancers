@@ -4,7 +4,7 @@ import { ApiOperation, ApiBody, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { MongoRepository } from 'typeorm';
 import { ObjectID } from 'mongodb';
 import { AppService } from './app.service';
-import { FindUserDto, CreateUserDto } from './user.dto';
+import { CreateUserDto } from './user.dto';
 import { User } from './entity/user.entity';
 
 @Controller()

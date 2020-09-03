@@ -19,7 +19,7 @@ import { User } from './entity/user.entity';
 			useUnifiedTopology: true,
 			useNewUrlParser: true
 		}),
-		TypeOrmModule.forFeature([User]),
+		TypeOrmModule.forFeature([User])
 	],
 	controllers: [AppController],
 	providers: [AppService],

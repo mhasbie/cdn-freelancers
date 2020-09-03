@@ -22,6 +22,6 @@ export class User {
     hobby: string[];
 
 	constructor(user?: Partial<User>) {
-    Object.assign(this, user);
-  }
+		Object.assign(this, user);
+	}
 }

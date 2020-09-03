@@ -1,12 +1,12 @@
 import { AppService } from './app.service';
-import { FindUserDto, CreateUserDto } from './user.dto';
+import { CreateUserDto } from './user.dto';
+import { User } from './entity/user.entity';
 export declare class AppController {
     private readonly appService;
     constructor(appService: AppService);
-    getHello(): string;
-    findAll(): string;
-    getUser(params: FindUserDto): string;
-    updateUser(params: FindUserDto): string;
-    deleteUser(params: FindUserDto): string;
-    addUser(params: CreateUserDto): string;
+    findAll(): Promise<User[]>;
+    getUser(id: any): Promise<User>;
+    updateUser(id: any, user: Partial<User>): Promise<void>;
+    deleteUser(id: any): Promise<void>;
+    addUser(user: CreateUserDto): Promise<User>;
 }

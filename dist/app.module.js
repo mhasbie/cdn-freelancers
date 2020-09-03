@@ -8,13 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const config_1 = require("@nestjs/config");
+const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const user_entity_1 = require("./entity/user.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [],
+        imports: [
+            config_1.ConfigModule.forRoot(),
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'mongodb',
+                url: process.env.MONGODB_CONNECTION_STRING,
+                database: process.env.MONGODB_DATABASE,
+                entities: [
+                    __dirname + '/**/*.entity{.ts,.js}',
+                ],
+                ssl: true,
+                useUnifiedTopology: true,
+                useNewUrlParser: true
+            }),
+            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User])
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
