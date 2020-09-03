@@ -6,10 +6,10 @@ const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const options = new swagger_1.DocumentBuilder()
-        .setTitle('CDN Freelancers directory')
-        .setDescription('for Etiqa technical assessment')
+        .setTitle('Cats example')
+        .setDescription('The cats API description')
         .setVersion('1.0')
-        .addTag('cdn')
+        .addTag('cats')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, options);
     swagger_1.SwaggerModule.setup('api', app, document);

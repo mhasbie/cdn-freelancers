@@ -14,70 +14,83 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const app_service_1 = require("./app.service");
 const user_dto_1 = require("./user.dto");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    getHello() {
-        return this.appService.getHello();
+    async findAll() {
+        return await this.appService.findAll();
     }
-    findAll() {
-        return this.appService.findAll();
+    async getUser(id) {
+        return await this.appService.getUser(id);
     }
-    getUser(params) {
-        return this.appService.getUser(params.id);
+    async updateUser(id, user) {
+        return await this.appService.updateUser(id, user);
     }
-    updateUser(params) {
-        return this.appService.updateUser(params.id);
+    async deleteUser(id) {
+        return await this.appService.deleteUser(id);
     }
-    deleteUser(params) {
-        return this.appService.deleteUser(params.id);
-    }
-    addUser(params) {
-        return this.appService.addUser(params);
+    async addUser(user) {
+        return await this.appService.addUser(user);
     }
 };
 __decorate([
-    common_1.Get(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
-__decorate([
     common_1.Get('all'),
+    swagger_1.ApiOperation({ description: 'Get all users' }),
+    swagger_1.ApiResponse({ status: 200, description: 'OK' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "findAll", null);
 __decorate([
     common_1.Get(':id'),
-    __param(0, common_1.Param()),
+    swagger_1.ApiOperation({ description: 'Fetch user' }),
+    swagger_1.ApiParam({ name: 'id', type: 'string', required: true }),
+    swagger_1.ApiResponse({ status: 200, description: 'OK' }),
+    swagger_1.ApiResponse({ status: 404, description: 'Record not found.' }),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.FindUserDto]),
-    __metadata("design:returntype", String)
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "getUser", null);
 __decorate([
-    common_1.Post(':id'),
-    __param(0, common_1.Param()),
+    common_1.Put(':id'),
+    common_1.HttpCode(204),
+    swagger_1.ApiOperation({ description: 'Update user' }),
+    swagger_1.ApiParam({ name: 'id', type: 'string', required: true }),
+    swagger_1.ApiBody({ type: user_dto_1.CreateUserDto, required: true }),
+    swagger_1.ApiResponse({ status: 204, description: 'Record updated.' }),
+    swagger_1.ApiResponse({ status: 404, description: 'Record not found.' }),
+    __param(0, common_1.Param('id')), __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.FindUserDto]),
-    __metadata("design:returntype", String)
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "updateUser", null);
 __decorate([
     common_1.Delete(':id'),
-    __param(0, common_1.Param()),
+    common_1.HttpCode(204),
+    swagger_1.ApiOperation({ description: 'Delete user' }),
+    swagger_1.ApiParam({ name: 'id', type: 'string', required: true }),
+    swagger_1.ApiResponse({ status: 204, description: 'Record deleted.' }),
+    swagger_1.ApiResponse({ status: 404, description: 'Record not found.' }),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.FindUserDto]),
-    __metadata("design:returntype", String)
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "deleteUser", null);
 __decorate([
-    common_1.Put(),
+    common_1.Post(),
+    swagger_1.ApiOperation({ description: 'Create new user' }),
+    swagger_1.ApiBody({ type: user_dto_1.CreateUserDto, required: true }),
+    swagger_1.ApiResponse({ status: 201, description: 'The record has been successfully created.' }),
+    swagger_1.ApiResponse({ status: 400, description: 'Bad Request.' }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_dto_1.CreateUserDto]),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "addUser", null);
 AppController = __decorate([
     common_1.Controller(),
