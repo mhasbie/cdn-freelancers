@@ -24,12 +24,25 @@ export class AppService {
 		return user;
 	}
 	
-	updateUser(id): string {
-		return `Update user ${id}`;
+	async updateUser(id, user: Partial<User>): Promise<void> {
+		// Check if entity exists
+		const exists = ObjectID.isValid(id) && await this.usersRepository.findOne(id);
+		if (!exists) {
+			throw new NotFoundException();
+		}
+		if (!user || !user.username || !user.email || !user.phone) {
+			throw new BadRequestException(`A user must have at least username, email, and phone defined`);
+		}
+		await this.usersRepository.update(id, user);
 	}
 	
-	deleteUser(id): string {
-		return `Delete user ${id}`;
+	async deleteUser(id): Promise<void> {
+		// Check if entity exists
+		const exists = ObjectID.isValid(id) && await this.usersRepository.findOne(id);
+		if (!exists) {
+			throw new NotFoundException();
+		}
+		await this.usersRepository.delete(id);
 	}
 	
 	async addUser(user: Partial<User>): Promise<User> {

@@ -16,8 +16,8 @@ export class CreateUserDto {
 	phone: string;
 	
 	@ApiProperty()
-	skillsets: string;
+	skillsets: string[];
 	
 	@ApiProperty()
-	hobby: string;
+	hobby: string[];
 }

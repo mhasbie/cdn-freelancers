@@ -16,10 +16,10 @@ export class User {
     phone: string;
 	
 	@Column()
-    skillsets: string;
+    skillsets: string[];
 	
 	@Column()
-    hobby: string;
+    hobby: string[];
 
 	constructor(user?: Partial<User>) {
     Object.assign(this, user);
