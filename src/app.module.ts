@@ -12,6 +12,8 @@ import { User } from './entity/user.entity';
 	imports: [
 		ConfigModule.forRoot(),
 		GraphQLModule.forRoot({
+			debug: true,
+			playground: true,
 			autoSchemaFile: join(process.cwd(), 'src/schema.gql')
 		}),
 		TypeOrmModule.forRoot({

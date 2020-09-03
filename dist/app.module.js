@@ -23,6 +23,8 @@ AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot(),
             graphql_1.GraphQLModule.forRoot({
+                debug: true,
+                playground: true,
                 autoSchemaFile: path_1.join(process.cwd(), 'src/schema.gql')
             }),
             typeorm_1.TypeOrmModule.forRoot({
