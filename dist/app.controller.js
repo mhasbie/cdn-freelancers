@@ -28,10 +28,10 @@ let AppController = class AppController {
         return await this.appService.getUser(id);
     }
     async updateUser(id, user) {
-        return await this.appService.updateUser(id, user);
+        await this.appService.updateUser(id, user);
     }
     async deleteUser(id) {
-        return await this.appService.deleteUser(id);
+        await this.appService.deleteUser(id);
     }
     async addUser(user) {
         return await this.appService.addUser(user);
@@ -61,7 +61,7 @@ __decorate([
     common_1.HttpCode(204),
     swagger_1.ApiOperation({ description: 'Update user' }),
     swagger_1.ApiParam({ name: 'id', type: 'string', required: true }),
-    swagger_1.ApiBody({ type: user_dto_1.CreateUserDto, required: true }),
+    swagger_1.ApiBody({ type: user_dto_1.UserDto, required: true }),
     swagger_1.ApiResponse({ status: 204, description: 'Record updated.' }),
     swagger_1.ApiResponse({ status: 404, description: 'Record not found.' }),
     __param(0, common_1.Param('id')), __param(1, common_1.Body()),
@@ -84,16 +84,16 @@ __decorate([
 __decorate([
     common_1.Post(),
     swagger_1.ApiOperation({ description: 'Create new user' }),
-    swagger_1.ApiBody({ type: user_dto_1.CreateUserDto, required: true }),
+    swagger_1.ApiBody({ type: user_dto_1.UserDto, required: true }),
     swagger_1.ApiResponse({ status: 201, description: 'The record has been successfully created.' }),
     swagger_1.ApiResponse({ status: 400, description: 'Bad Request.' }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [user_dto_1.UserDto]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "addUser", null);
 AppController = __decorate([
-    common_1.Controller(),
+    common_1.Controller('user'),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
 exports.AppController = AppController;

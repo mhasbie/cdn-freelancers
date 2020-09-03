@@ -25,6 +25,9 @@ let AppService = class AppService {
     async findAll() {
         return await this.usersRepository.find();
     }
+    async findAllUsers(usersArgs) {
+        return await this.usersRepository.find(usersArgs);
+    }
     async getUser(id) {
         const user = mongodb_1.ObjectID.isValid(id) && await this.usersRepository.findOne(id);
         if (!user) {

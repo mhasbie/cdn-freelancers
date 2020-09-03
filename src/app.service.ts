@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { ObjectID } from 'mongodb';
 import { User } from './entity/user.entity';
+import { UserDto } from './user.dto';
+import { UsersArgs } from './user.args.dto';
 
 @Injectable()
 export class AppService {
@@ -13,6 +15,10 @@ export class AppService {
 	
 	async findAll(): Promise<User[]> {
 		return await this.usersRepository.find();
+	}
+	
+	async findAllUsers(usersArgs: UsersArgs): Promise<User[]> {
+		return await this.usersRepository.find(usersArgs);
 	}
 	
 	async getUser(id): Promise<User> {

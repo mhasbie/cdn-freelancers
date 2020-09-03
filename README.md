@@ -1,51 +1,171 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Greetings!
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Dear Hiring Manager,
 
-## Description
+May I present my solution for the technical assessment. Do [reach out](#contact-me) if you would like to know more.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technology Stacks
+
+Technologies used in this project:
+
+|     |     |
+| --- | --- |
+| <a href="https://nodejs.org/en/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="100" alt="NodeJS" /></a> | [NodeJS](https://nodejs.org/en/) |
+| <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="100" alt="NestJS" /></a> | [NestJS](http://nestjs.com/)
+| <a href="https://swagger.io" target="blank"><img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" width="100" alt="Swagger" /></a> | [Swagger](https://swagger.io) |
+| <a href="https://typeorm.io/" target="blank"><img src="https://avatars0.githubusercontent.com/u/20165699?s=200&v=4" width="100" alt="TypeORM" /></a> | [TypeORM](https://typeorm.io/) |
+| <a href="https://www.mongodb.com" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" width="100" alt="MongoDB" /></a> | [MongoDB](https://www.mongodb.com) |
+| <a href="https://graphql.org" target="blank"><img src="https://cdn-media-1.freecodecamp.org/images/1*IvCDlfi3vQfgyKO1eFv4jA.png" width="100" alt="GraphQL" /></a> | [GraphQL](https://graphql.org) |
+| | |
+
+## Demo
+
+Go to [https://cdn-freelancers.herokuapp.com/api/](https://cdn-freelancers.herokuapp.com/api/) to view and test the API.
+ 
+
+## API Usage (REST)
+
+| HTTP Method | Route | Params | Request Body | Description | Response |
+| ---         | ---   | ---    | ---          | ---         | ---      |
+| `GET`         | /user/all  |        |              | Get all users | `200` OK |
+| `GET`         | /user/{id}  | `id`:`string` |              | Fetch user by id | `200` OK <br/> `404` Record not found. |
+| `PUT`         | /user/{id}  | `id`:`string` | [User DTO](#user-dto)             | Update user info by id | `204` Record updated. <br/> `404` Record not found. |
+| `DELETE`      | /user/{id}  | `id`:`string` |              | Delete user by id | `204` Record deleted. <br/> `404` Record not found. |
+| `POST`         | /user/  |        | [User DTO](#user-dto)             | Create new user | `201` The record has been successfully created. <br/> `400` Bad Request. |
+
+### User DTO
+
+```json
+{
+  "username": "string",
+  "email": "string",
+  "phone": "string",
+  "skillsets": [
+    "string"
+  ],
+  "hobby": [
+    "string"
+  ]
+}
+```
+
+## API Usage (GraphQL)
+
+### @Query users
+Return all users
+
+Example:
+
+```graphql
+{
+  users {
+	id
+    username
+    email
+    phone
+    skillsets
+    hobby
+  }
+}
+```
+
+### @Query getUser(id: string)
+Get user by id
+
+Example:
+
+```graphql
+{
+  getUser(id: "abc") {
+    id
+    username
+    email
+    phone
+    skillsets
+    hobby
+  }
+}
+```
+
+### @Mutation addUser(newUser: UserDto)
+Create new user
+
+Example:
+
+```graphql
+mutation {
+  addUser(newUser: {
+    username: "string",
+    email: "string",
+    phone: "string",
+    skillsets: [
+      "string"
+    ],
+    hobby: [
+      "string"
+    ]
+  }){
+    id
+    username
+    email
+  }
+}
+```
+
+### @Mutation updateUser(id: string, userData: UserDto)
+Update user info by id
+
+Example:
+
+```graphql
+mutation {
+  updateUser(id: "string", userData: {
+    username: "string",
+    email: "string",
+    phone: "string",
+    skillsets: [
+      "string"
+    ],
+    hobby: [
+      "string"
+    ]
+  })
+}
+```
+
+
+### @Mutation removeUser(id: string)
+Delete user by id
+
+Example:
+
+```graphql
+mutation {
+  removeUser(id: "string")
+}
+```
 
 ## Installation
 
 ```bash
 $ npm install
+$ npm run build
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ nest start
 
 # watch mode
 $ npm run start:dev
 
 # production mode
-$ npm run start:prod
+$ npm run start
 ```
+
+Go to [http://localhost:3000/api](http://localhost:3000/api) to launch Swagger
 
 ## Test
 
@@ -60,16 +180,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Contact Me
 
-## Stay in touch
+- Author - [M. Hasbie](https://www.linkedin.com/in/mhasbie/)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).

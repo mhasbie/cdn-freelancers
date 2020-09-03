@@ -9,8 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
+const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("@nestjs/typeorm");
+const path_1 = require("path");
 const app_controller_1 = require("./app.controller");
+const app_resolver_1 = require("./app.resolver");
 const app_service_1 = require("./app.service");
 const user_entity_1 = require("./entity/user.entity");
 let AppModule = class AppModule {
@@ -19,6 +22,9 @@ AppModule = __decorate([
     common_1.Module({
         imports: [
             config_1.ConfigModule.forRoot(),
+            graphql_1.GraphQLModule.forRoot({
+                autoSchemaFile: path_1.join(process.cwd(), 'src/schema.gql')
+            }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mongodb',
                 url: process.env.MONGODB_CONNECTION_STRING,
@@ -33,7 +39,7 @@ AppModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User])
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, app_resolver_1.AppsResolver],
     })
 ], AppModule);
 exports.AppModule = AppModule;

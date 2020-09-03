@@ -1,5 +1,5 @@
 import { AppService } from './app.service';
-import { CreateUserDto } from './user.dto';
+import { UserDto } from './user.dto';
 import { User } from './entity/user.entity';
 export declare class AppController {
     private readonly appService;
@@ -8,5 +8,5 @@ export declare class AppController {
     getUser(id: any): Promise<User>;
     updateUser(id: any, user: Partial<User>): Promise<void>;
     deleteUser(id: any): Promise<void>;
-    addUser(user: CreateUserDto): Promise<User>;
+    addUser(user: UserDto): Promise<User>;
 }
