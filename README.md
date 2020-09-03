@@ -20,7 +20,9 @@ Technologies used in this project:
 
 ## Demo
 
-Go to [https://cdn-freelancers.herokuapp.com/api/](https://cdn-freelancers.herokuapp.com/api/) to view and test the API.
+[REST API Demo](https://cdn-freelancers.herokuapp.com/api/)
+
+[GraphQL Demo](https://cdn-freelancers.herokuapp.com/graphql)
  
 
 ## API Usage (REST)
