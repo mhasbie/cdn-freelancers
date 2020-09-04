@@ -1,6 +1,5 @@
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-//import { Repository } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './entity/user.entity';
