@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserGridComponent } from './user-grid/user-grid.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserGridComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+	HttpClientModule,
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
