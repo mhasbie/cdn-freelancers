@@ -24,7 +24,6 @@ export class ActionButtonComponent implements ICellRenderer  {
 	constructor(private modalService: NgbModal) {}
 
 	agInit(params): void {
-		// console.log(params);
 		this.params = params;
 		this.data = params.data;
 		
@@ -78,7 +77,7 @@ export class ActionButtonComponent implements ICellRenderer  {
 	
 	private loadForm() {
 		this.userForm = new FormGroup({          
-			'username': new FormControl(this.data.username), //note, can have up to 3 Constructor Params: default value, validators, AsyncValidators
+			'username': new FormControl(this.data.username),
 			'email': new FormControl(this.data.email),
 			'phone': new FormControl(this.data.phone),
 			'skillsets': new FormControl(this.data.skillsets),
@@ -88,7 +87,8 @@ export class ActionButtonComponent implements ICellRenderer  {
 	
 	private refreshData() {
 		this.params.apiService.getAllUsers().subscribe((data) => {
-			this.params.api.setRowData(data);
+			let newData = (data && data.data && data.data.users) ? data.data.users : data;
+			this.params.api.setRowData(newData);
 		});
 	}
 

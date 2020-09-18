@@ -64,7 +64,7 @@ Example:
 ```graphql
 {
   users {
-	id
+    id
     username
     email
     phone

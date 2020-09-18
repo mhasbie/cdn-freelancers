@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	restApiUrl: 'https://cdn-freelancers.herokuapp.com/',
+	graphQlUrl: 'https://cdn-freelancers.herokuapp.com/graphql'
 };
 
 /*

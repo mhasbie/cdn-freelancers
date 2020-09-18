@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserGridComponent } from './user-grid/user-grid.component';
 import { ActionButtonComponent } from './action-button/action-button.component';
+import { GraphQLModule } from './graphql.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ActionButtonComponent } from './action-button/action-button.component';
     NgbModule,
 	AgGridModule.withComponents([ActionButtonComponent]),
 	FontAwesomeModule,
-	ReactiveFormsModule
+	ReactiveFormsModule,
+	GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

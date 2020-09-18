@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User, ApiService } from './api.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class RestApiService implements ApiService {
 	
-	private baseUrl = 'https://cdn-freelancers.herokuapp.com/';
+	private baseUrl = environment.restApiUrl;
 
 	constructor(private httpClient: HttpClient) { }
   

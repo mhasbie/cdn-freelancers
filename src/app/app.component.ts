@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User, ApiService } from './api.service';
 import { RestApiService } from './rest-api.service';
+import { GraphQLService } from './graphql.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent {
 	title = 'cdn-demo';
   
 	constructor(
-		public restApiService: RestApiService
+		public restApiService: RestApiService,
+		public graphQlService: GraphQLService
 	) { }
 }

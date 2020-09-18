@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -15,6 +15,7 @@ export class UserGridComponent implements OnInit {
 	@Input() apiService: ApiService;  
 	
 	public faPlus = faPlus;
+	public faSyncAlt = faSyncAlt;
 	public closeResult = '';
 	
 	public gridApi;
@@ -76,9 +77,9 @@ export class UserGridComponent implements OnInit {
 	loadData(): void {
 		this.gridApi.showLoadingOverlay();
 		this.apiService.getAllUsers().subscribe((data)=>{
-			this.rowData = data;
+			this.rowData = (data && data.data && data.data.users) ? data.data.users : data;
 			
-			if (data.length > 0) {
+			if (this.rowData.length > 0) {
 				this.gridApi.hideOverlay();
 			} else {
 				this.gridApi.showNoRowsOverlay();
@@ -88,7 +89,7 @@ export class UserGridComponent implements OnInit {
 	
 	private loadForm() {
 		this.userForm = new FormGroup({          
-			'username': new FormControl(null), //note, can have up to 3 Constructor Params: default value, validators, AsyncValidators
+			'username': new FormControl(null),
 			'email': new FormControl(null),
 			'phone': new FormControl(null),
 			'skillsets': new FormControl(null),
@@ -97,7 +98,6 @@ export class UserGridComponent implements OnInit {
 	}
 	
 	create() {
-		// console.log(this.data);
 		let user = this.userForm.value;
 		let skillsets = (typeof this.userForm.value.skillsets == 'string') ? this.userForm.value.skillsets.split(',') : this.userForm.value.skillsets;
 		let hobby = (typeof this.userForm.value.hobby == 'string') ? this.userForm.value.hobby.split(',') : this.userForm.value.hobby;
@@ -109,6 +109,7 @@ export class UserGridComponent implements OnInit {
 			success => { 
 				alert('User created');
 				this.loadData();
+				this.loadForm();
 			},
 			error => alert(error)
 		);
