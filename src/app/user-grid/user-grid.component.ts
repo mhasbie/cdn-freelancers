@@ -10,8 +10,8 @@ import { ActionButtonComponent } from '../action-button/action-button.component'
 export class UserGridComponent implements OnInit {
 	@Input() apiService: ApiService;  
 	
-	private gridApi;
-	private gridColumnApi;
+	public gridApi;
+	public gridColumnApi;
   
 	public columnDefs;
 	public defaultColDef;
@@ -20,15 +20,7 @@ export class UserGridComponent implements OnInit {
 	public overlayNoRowsTemplate;
 	public frameworkComponents;
 
-	constructor() { 
-		this.columnDefs = [
-			{ headerName: 'Username', field: 'username' },
-			{ headerName: 'Email', field: 'email' },
-			{ headerName: 'Phone', field: 'phone' },
-			{ headerName: 'Skill Sets', field: 'skillsets', sortable: false },
-			{ headerName: 'Hobby', field: 'hobby', sortable: false },
-			{ headerName: '', field: '', sortable: false, filter: false, cellRenderer: 'actionButtonComponent' }
-		];
+	constructor() {
 		
 		this.defaultColDef = {
 			editable: false,
@@ -52,7 +44,16 @@ export class UserGridComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		
+		this.columnDefs = [
+			{ headerName: 'Username', field: 'username' },
+			{ headerName: 'Email', field: 'email' },
+			{ headerName: 'Phone', field: 'phone' },
+			{ headerName: 'Skill Sets', field: 'skillsets', sortable: false },
+			{ headerName: 'Hobby', field: 'hobby', sortable: false },
+			{ headerName: '', field: '', sortable: false, filter: false, cellRenderer: 'actionButtonComponent', cellRendererParams: {
+				apiService: this.apiService
+			} }
+		];
 	}
 	
 	onGridReady(params) {

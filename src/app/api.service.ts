@@ -11,4 +11,8 @@ export interface User {
 @Injectable()
 export abstract class ApiService {
 	abstract getAllUsers();
+	
+	abstract updateUser(id: string, user: any);
+	
+	abstract deleteUser(id: string);
 }

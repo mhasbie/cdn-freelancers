@@ -6,14 +6,13 @@ import { User, ApiService } from './api.service';
 	providedIn: 'root'
 })
 export class RestApiService implements ApiService {
+	
+	private baseUrl = 'https://cdn-freelancers.herokuapp.com/';
 
 	constructor(private httpClient: HttpClient) { }
   
 	getAllUsers() {
-		// let url = 'https://cdn-freelancers.herokuapp.com/user/all';
-		let baseUrl = 'https://cdn-freelancers.herokuapp.com/'
-		// let baseUrl = 'http://localhost:3000/'
-		let url = baseUrl + 'user/all';
+		let url = this.baseUrl + 'user/all';
 		return this.httpClient.get(url, {
 			headers: {
 				'Access-Control-Allow-Origin': '*',
@@ -21,5 +20,15 @@ export class RestApiService implements ApiService {
 				'Content-Type': 'application/json',
 			}
 		});
+	}
+	
+	updateUser(id, user) {
+		let url = this.baseUrl + `user/${id}`;
+		return this.httpClient.put(url, user);
+	}
+	
+	deleteUser(id) {
+		let url = this.baseUrl + `user/${id}`;
+		return this.httpClient.delete(url);
 	}
 }
