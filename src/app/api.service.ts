@@ -15,4 +15,6 @@ export abstract class ApiService {
 	abstract updateUser(id: string, user: any);
 	
 	abstract deleteUser(id: string);
+	
+	abstract createUser(user: any);
 }

@@ -31,4 +31,9 @@ export class RestApiService implements ApiService {
 		let url = this.baseUrl + `user/${id}`;
 		return this.httpClient.delete(url);
 	}
+	
+	createUser(user) {
+		let url = this.baseUrl + `user/`;
+		return this.httpClient.post(url, user);
+	}
 }
