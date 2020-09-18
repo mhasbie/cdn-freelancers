@@ -305,11 +305,13 @@
 	<ngb-tabset [destroyOnHide]="false">
 		<ngb-tab title="REST">
 			<ng-template ngbTabContent>
+				<p>This component uses REST API backend service</p>
 				<app-user-grid [apiService]="restApiService"></app-user-grid>
 			</ng-template>
 		</ngb-tab>
 		<ngb-tab title="GraphQL">
 			<ng-template ngbTabContent>
+			<p>This component uses GraphQL backend service</p>
 				<app-user-grid [apiService]="restApiService"></app-user-grid>
 			</ng-template>
 		</ngb-tab>

@@ -11,7 +11,8 @@ export class RestApiService implements ApiService {
   
 	getAllUsers() {
 		// let url = 'https://cdn-freelancers.herokuapp.com/user/all';
-		let baseUrl = 'http://localhost:3000/'
+		let baseUrl = 'https://cdn-freelancers.herokuapp.com/'
+		// let baseUrl = 'http://localhost:3000/'
 		let url = baseUrl + 'user/all';
 		return this.httpClient.get(url, {
 			headers: {

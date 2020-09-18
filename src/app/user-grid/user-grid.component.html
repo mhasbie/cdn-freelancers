@@ -1,27 +1,18 @@
 <div class="content">
 
-	<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+	<p></p>
+	
+	<ag-grid-angular
+		style="width: 1000px; height: 500px;"
+		class="ag-theme-alpine"
+		[rowData]="rowData"
+		[columnDefs]="columnDefs"
+		[defaultColDef]="defaultColDef"
+		[overlayLoadingTemplate]="overlayLoadingTemplate"
+		[overlayNoRowsTemplate]="overlayNoRowsTemplate"
+		[frameworkComponents]="frameworkComponents"
+		(gridReady)="onGridReady($event)"
+		>
+	</ag-grid-angular>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Username</th>
-				<th scope="col">Email</th>
-				<th scope="col">Phone</th>
-				<th scope="col">Skill Sets</th>
-				<th scope="col">Hobby</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let user of users; index as i">
-				<th scope="row">{{ i + 1 }}</th>
-				<td>{{ user.username }}</td>
-				<td>{{ user.email }}</td>
-				<td>{{ user.phone }}</td>
-				<td>{{ user.skillsets }}</td>
-				<td>{{ user.hobby }}</td>
-			</tr>
-		</tbody>
-	</table>
 </div>
