@@ -1,0 +1,40 @@
+<span>
+	<ng-template #content let-modal>
+		<div class="modal-header">
+			<h4 class="modal-title" id="modal-basic-title">Update User: {{ data.username }}</h4>
+			<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<form [formGroup]="userForm">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" formControlName="username" class="form-control" placeholder="username" name="username" />
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" formControlName="email" class="form-control" placeholder="email" name="email" />
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone</label>
+					<input type="text" formControlName="phone" class="form-control" placeholder="phone" name="phone" />
+				</div>
+				<div class="form-group">
+					<label for="skillsets">Skill Sets</label>
+					<textarea type="text" formControlName="skillsets" class="form-control" name="skillsets"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="hobby">Hobby</label>
+					<textarea type="text" formControlName="hobby" class="form-control" name="hobby"></textarea>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="save();modal.close('Save click');">Save</button>
+		</div>
+	</ng-template>
+	<a href="#" (click)="open(content)"><fa-icon [icon]="faEdit" style="color: #3683ff;"></fa-icon></a>
+	&nbsp;
+	<a href="#" (click)="delete()"><fa-icon [icon]="faTrash" style="color: #cc0000;"></fa-icon></a>
+</span>
