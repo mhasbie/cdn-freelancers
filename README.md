@@ -16,6 +16,7 @@ Technologies used in this project:
 | <a href="https://typeorm.io/" target="blank"><img src="https://avatars0.githubusercontent.com/u/20165699?s=200&v=4" width="100" alt="TypeORM" /></a> | [TypeORM](https://typeorm.io/) |
 | <a href="https://www.mongodb.com" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" width="100" alt="MongoDB" /></a> | [MongoDB](https://www.mongodb.com) |
 | <a href="https://graphql.org" target="blank"><img src="https://cdn-media-1.freecodecamp.org/images/1*IvCDlfi3vQfgyKO1eFv4jA.png" width="100" alt="GraphQL" /></a> | [GraphQL](https://graphql.org) |
+| <a href="https://angular.io" target="blank"><img src="https://miro.medium.com/max/480/1*VKY-Ldkt-iHobItql7G_5w.png" width="100" alt="Angular" /></a> | [Angular](https://angular.io) |
 | | |
 
 ## Demo
@@ -23,6 +24,8 @@ Technologies used in this project:
 [REST API Demo](https://cdn-freelancers.herokuapp.com/api/)
 
 [GraphQL Demo](https://cdn-freelancers.herokuapp.com/graphql)
+
+[Angular Client Demo](https://cdn-freelancers-client.herokuapp.com)
  
 
 ## API Usage (REST)
